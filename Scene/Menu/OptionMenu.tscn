@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://ox0u1agjn1cj"]
+
+[ext_resource type="Script" path="res://Scene/Menu/OptionMenu.gd" id="1_iwai1"]
+
+[sub_resource type="Theme" id="Theme_7rcei"]
+default_font_size = 60
+
+[node name="OptionMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+script = ExtResource("1_iwai1")
+
+[node name="CenterContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_right = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Button" type="Button" parent="CenterContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = SubResource("Theme_7rcei")
+text = "Reprendre"
+
+[node name="Option" type="Button" parent="CenterContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = SubResource("Theme_7rcei")
+text = "Option
+"
+
+[node name="Button2" type="Button" parent="CenterContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = SubResource("Theme_7rcei")
+text = "Main Menu"
+
+[node name="HSlider" type="HSlider" parent="CenterContainer"]
+layout_mode = 2
+min_value = -25.0
+max_value = 0.0
+
+[connection signal="button_up" from="CenterContainer/Button" to="." method="_on_button_button_up"]
+[connection signal="button_up" from="CenterContainer/Option" to="." method="soundOption"]
+[connection signal="button_up" from="CenterContainer/Button2" to="." method="_on_Main_menu_button_up"]
+[connection signal="drag_ended" from="CenterContainer/HSlider" to="." method="_on_h_slider_drag_ended"]

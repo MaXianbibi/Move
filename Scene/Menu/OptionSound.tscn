@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://o2xqflgtsd5n"]
+
+[ext_resource type="FontFile" uid="uid://ccmadn7kdwfob" path="res://Assets/Font/Cinzel/Cinzel-VariableFont_wght.ttf" id="1_qdd8f"]
+[ext_resource type="Script" path="res://Scene/Menu/OptionSound.gd" id="2_vwh7n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s3hf6"]
+bg_color = Color(0.364706, 0.603922, 0.937255, 1)
+
+[sub_resource type="Theme" id="Theme_02cp5"]
+Button/font_sizes/font_size = 23
+Button/fonts/font = ExtResource("1_qdd8f")
+Label/font_sizes/font_size = 76
+Label/fonts/font = ExtResource("1_qdd8f")
+Label/styles/normal = SubResource("StyleBoxFlat_s3hf6")
+
+[sub_resource type="Theme" id="Theme_7rcei"]
+default_font_size = 60
+
+[node name="OptionMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = SubResource("Theme_02cp5")
+script = ExtResource("2_vwh7n")
+
+[node name="CenterContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_right = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer"]
+layout_mode = 2
+text = "Sound"
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="CenterContainer"]
+layout_mode = 2
+value = 80.0
+rounded = true
+
+[node name="Retour" type="Button" parent="CenterContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = SubResource("Theme_7rcei")
+text = "Retour"
+
+[connection signal="button_up" from="CenterContainer/Retour" to="." method="_on_retour_button_up"]
